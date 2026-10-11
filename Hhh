@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHALED.EXE — My World</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@400;600;800&family=Share+Tech+Mono&display=swap');
+:root {
+  --blue: #35d9ff;
+  --pink: #ff64d8;
+  --lime: #caff70;
+  --dark: #090d1c;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--dark);
+  background-image:
+    linear-gradient(#263f7040 1px, transparent 1px),
+    linear-gradient(90deg, #263f7040 1px, transparent 1px),
+    radial-gradient(ellipse at top, #243c71, #090d1c 65%);
+  background-size: 25px 25px, 25px 25px, auto;
+  color: #f5f7ff;
+  font-family: 'Changa', sans-serif;
+  line-height: 1.8;
+}
+a { color: inherit; }
+::selection {
+  background: var(--pink);
+  color: #080b18;
+}
+/* TOP BAR */
+.topbar {
+  background: linear-gradient(90deg, #142951, #285e8a, #172443);
+  border-bottom: 2px solid var(--blue);
+  padding: 9px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: var(--blue);
+}
+.online {
+  color: var(--lime);
+}
+/* MAIN HEADER */
+header {
+  max-width: 1050px;
+  margin: 35px auto 25px;
+  padding: 25px 20px;
+  text-align: center;
+}
+.logo {
+  display: inline-block;
+  color: var(--blue);
+  font: bold 12px 'Share Tech Mono', monospace;
+  border: 1px solid var(--blue);
+  padding: 5px 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 14px #35d9ff40;
+  letter-spacing: 2px;
+}
+header h1 {
+  font-size: clamp(42px, 9vw, 76px);
+  line-height: 1.25;
+  font-weight: 800;
+  color: white;
+  text-shadow:
+    3px 3px 0 #1762a9,
+    6px 6px 0 #ff64d855,
+    0 0 30px #35d9ff70;
+}
+header p {
+  color: #b5c5e8;
+  margin-top: 14px;
+  font-size: 15px;
+}
+.tag {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 6px 20px;
+  background: linear-gradient(110deg, #174d77, #41255f);
+  border: 1px solid var(--pink);
+  color: #fff;
+  box-shadow: 4px 4px 0 #ff64d850;
+  font-size: 13px;
+}
+/* CONTENT */
+main {
+  width: 91%;
+  max-width: 1000px;
+  margin: auto;
+}
+section {
+  margin-bottom: 35px;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font-size: 23px;
+  color: var(--blue);
+  text-shadow: 0 0 12px #35d9ff40;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue));
+}
+.panel {
+  background: linear-gradient(145deg, #152343ed, #0d1227f5);
+  border: 1px solid #3b6091;
+  padding: 23px;
+  box-shadow: 5px 5px 0 #0008, inset 0 1px #ffffff18;
+  position: relative;
+}
+.panel::before {
+  content: "SYSTEM MESSAGE";
+  position: absolute;
+  top: -12px;
+  right: 14px;
+  background: var(--blue);
+  color: #07101e;
+  padding: 0 9px;
+  font: 10px 'Share Tech Mono', monospace;
+}
+.about-text {
+  color: #c8d4ee;
+  font-size: 15px;
+}
+.about-text strong {
+  color: var(--lime);
+}
+/* FAVORITE SHOWS */
+.shows {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+.card {
+  min-width: 0;
+  padding: 9px;
+  background: linear-gradient(145deg, #192849, #0a1022);
+  border: 1px solid #344a70;
+  box-shadow: 4px 4px 0 #0009;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  border-color: var(--pink);
+  box-shadow: 0 0 18px #ff64d830, 4px 4px 0 #0009;
+}
+.poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 30%, #35658b, transparent 45%),
+    linear-gradient(145deg, #253f70, #090d1c);
+  border: 1px solid #49628b;
+}
+.poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s;
+}
+.card:hover .poster img {
+  transform: scale(1.06);
+}
+.poster-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  font: bold 16px 'Share Tech Mono', monospace;
+  color: var(--blue);
+  text-shadow: 0 0 12px #35d9ff;
+}
+.card h3 {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: white;
+}
+.card p {
+  color: #a9bad7;
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 4px;
+  min-height: 38px;
+}
+.rank {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--lime);
+  font: 10px 'Share Tech Mono', monospace;
+  border: 1px solid #caff7045;
+  padding: 1px 6px;
+}
+/* INTERESTS */
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.interests span {
+  border: 1px solid #3e6390;
+  background: linear-gradient(135deg, #17294a, #211633);
+  padding: 7px 13px;
+  font-size: 13px;
+  color: #d9e9ff;
+  box-shadow: 2px 2px 0 #0008;
+}
+/* FOOTER */
+footer {
+  margin-top: 45px;
+  padding: 25px 15px;
+  text-align: center;
+  border-top: 1px solid #31486d;
+  background: #090d1cd9;
+  color: #8195b9;
+  font-size: 12px;
+}
+footer .end {
+  font: 11px 'Share Tech Mono', monospace;
+  color: var(--pink);
+  margin-bottom: 7px;
+}
+@media (max-width: 720px) {
+  .shows {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+  header { margin-top: 25px; }
+  .panel { padding: 20px 15px; }
+  .section-title { font-size: 20px; }
+}
+@media (min-width: 721px) and (max-width: 900px) {
+  .shows { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span>KHALED.EXE</span>
+  <span class="online">● SYSTEM ONLINE</span>
+  <span>EST. 2000s</span>
+</div>
+<header>
+  <div class="logo">WELCOME TO MY WORLD_</div>
+  <h1>هلا، أنا خالد</h1>
+  <p>Just a guy on the internet.</p>
+  <span class="tag">★ MAIN CHARACTER ENERGY ★</span>
+</header>
+<main>
+  <section>
+    <h2 class="section-title">01 / من أنا؟</h2>
+    <div class="panel">
+      <p class="about-text">
+        أنا خالد، أحب التقنية والبرمجة واكتشاف الأشياء الجديدة.
+        مهتم بـ <strong>الأمن السيبراني</strong>، وأحب المسلسلات
+        اللي تترك فيك أثر، سواء كانت كوميدية أو خيال علمي أو دراما.
+        هذا موقعي الصغير، على طريقتي وبستايل الإنترنت القديم.
+      </p>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">02 / MY FAVORITE SHOWS</h2>
+    <div class="shows">
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/yDWJYRAwMNKbIYT8ZB33qy84uzO.jpg"
+               alt="Invincible"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">INVINCIBLE</span>
+        </div>
+        <h3>Invincible</h3>
+        <p>Superheroes, chaos, and consequences.</p>
+        <span class="rank">#01 / TOP TIER</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg"
+               alt="Rick and Morty"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">RICK &amp; MORTY</span>
+        </div>
+        <h3>Rick and Morty</h3>
+        <p>Multiverse adventures and insane humor.</p>
+        <span class="rank">SCI-FI MODE</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
+               alt="Game of Thrones"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">GAME OF THRONES</span>
+        </div>
+        <h3>Game of Thrones</h3>
+        <p>Power, kingdoms, and legendary rivalries.</p>
+        <span class="rank">WINTER IS COMING</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/iiBGRbvnZ6XrEOYci8yFv2k9s0c.jpg"
+               alt="South Park"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">SOUTH PARK</span>
+        </div>
+        <h3>South Park</h3>
+        <p>Wild satire with absolutely no chill.</p>
+        <span class="rank">CHAOS.exe</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"
+               alt="Breaking Bad"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">BREAKING BAD</span>
+        </div>
+        <h3>Breaking Bad</h3>
+        <p>A slow transformation into something darker.</p>
+        <span class="rank">DRAMA MODE</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/7Mcaex3QL8Kp4x1fW5Vn1Y8q7Zs.jpg"
+               alt="BoJack Horseman"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">BOJACK</span>
+        </div>
+        <h3>BoJack Horseman</h3>
+        <p>Comedy, complicated feelings, and life.</p>
+        <span class="rank">DEEP CUT</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg"
+               alt="Arcane"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">ARCANE</span>
+        </div>
+        <h3>Arcane</h3>
+        <p>Beautiful animation and emotional storytelling.</p>
+        <span class="rank">PIXEL PERFECT</span>
+      </article>
+      <article class="card">
+        <div class="poster">
+          <img src="https://image.tmdb.org/t/p/w500/9PFonBhy4cQy7Jz20NpMygczOkv.jpg"
+               alt="Gravity Falls"
+               loading="lazy"
+               onerror="this.style.display='none'">
+          <span class="poster-fallback">GRAVITY FALLS</span>
+        </div>
+        <h3>Gravity Falls</h3>
+        <p>Mysteries, weird creatures, and secrets.</p>
+        <span class="rank">MYSTERY FILE</span>
+      </article>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">03 / INTERESTS</h2>
+    <div class="panel">
+      <div class="interests">
+        <span>💻 Coding</span>
+        <span>🔐 Cybersecurity</span>
+        <span>🦅 Falconry</span>
+        <span>🎬 Movies &amp; TV</span>
+        <span>🛸 Sci-Fi</span>
+        <span>📚 Learning</span>
+        <span>🌐 Internet culture</span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">04 / STATUS</h2>
+    <div class="panel">
+      <p class="about-text">
+        <strong>Currently:</strong> Learning new things.<br>
+        <strong>Favorite era:</strong> The 2000s internet.<br>
+        <strong>Mission:</strong> Build something cool.
+      </p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="end">THANKS FOR VISITING MY CORNER OF THE INTERNET ♥</div>
+  <p>© 2026 KHALED.EXE — Made with HTML &amp; nostalgia.</p>
+</footer>
+</body>
+</html>
